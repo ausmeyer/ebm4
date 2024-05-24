@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Evidence-Based Medicine 4</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Austin Meyer, MD, PhD, MS, MPH, MS, FAAP" />
+    <meta name="date" content="2024-05-24" />
+    <script src="libs/header-attrs-2.25/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Evidence-Based Medicine 4
+]
+.subtitle[
+## Meta-studies
+]
+.author[
+### Austin Meyer, MD, PhD, MS, MPH, MS, FAAP
+]
+.date[
+### May 24, 2024
+]
+
+---
+
+
+
+class: middle
+
+# Agenda
+
+1. Gain an intuition about systematic reviews and meta-analyses
+&lt;br&gt;&lt;br&gt;
+2. Understand their strengths and shortcomings
+&lt;br&gt;&lt;br&gt;
+3. Review relevant measures and tests
+&lt;br&gt;&lt;br&gt;
+4. Go over some questions
+
+---
+
+class: middle, center
+
+# Basic Statistical Things
+
+---
+
+class: middle
+
+# There are some important random terms
+
+&lt;html&gt;
+--
+
+- **Generalizability**
+- How applicable is a finding from a particular sample to the population
+--
+&lt;br&gt;&lt;br&gt;
+- **P-value**
+- Probability of finding a value this extreme by random chance (given the assumption of a true null)
+--
+&lt;br&gt;&lt;br&gt;
+- **Confidence Interval**
+- Interval over which population (true?) value is expected to be found with a specified probability (e.g. 95%)
+--
+&lt;br&gt;&lt;br&gt;
+- **Efficacy**
+- Performance of treatment under ideal circumstances
+--
+&lt;br&gt;&lt;br&gt;
+- **Effectiveness**
+- Performance of treatment under real world circumstances
+
+---
+
+class: middle
+
+# Hypothesis Testing
+
+- `\(H_0\)`: There is **no** difference in the groups or no slope in regression **(these are the same thing, fyi)**
+
+- `\(H_A\)`: There is difference because the probability of `\(H_0\)` being true randomly is low **(you define how low)**
+
+---
+
+class: middle, center
+
+# Was on my boards for both Peds and IM
+
+.pull-right[.left[**Which of the following is the best method to assess the association between OCP use and blood clots?**&lt;br&gt;A. Two sample T-test&lt;br&gt;B. Analysis of variance&lt;br&gt;C. Pearson correlation&lt;br&gt;D. Chi-square test&lt;br&gt;E. Spearman correlation&lt;br&gt;]]
+
+
+&lt;table style="margin-left:6%;"&gt;
+&lt;tr&gt;&lt;th align="left"&gt;&lt;/th&gt;&lt;th align="right"&gt;Clot&lt;/th&gt;&lt;th align="right"&gt;No Clot&lt;/th&gt;&lt;th align="right"&gt;Total&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;OCP Use&lt;/td&gt;&lt;td align="right"&gt;500&lt;/td&gt;&lt;td align="right"&gt;400&lt;/td&gt;&lt;td align="right"&gt;900&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;No OCP Use&lt;/td&gt;&lt;td align="right"&gt;80&lt;/td&gt;&lt;td align="right"&gt;20&lt;/td&gt;&lt;td align="right"&gt;100&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Total&lt;/td&gt;&lt;td align="right"&gt;580&lt;/td&gt;&lt;td align="right"&gt;420&lt;/td&gt;&lt;td align="right"&gt;1000&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+.pull-left[Table 1: Counts of OCP use and blood clots]
+
+---
+
+class: middle, center
+
+# Was on my boards for both Peds and IM
+
+.pull-right[.left[**Which of the following is the best method to assess the association between OCP use and blood clots?**&lt;br&gt;A. Two sample T-test&lt;br&gt;B. Analysis of variance&lt;br&gt;C. Pearson correlation&lt;br&gt;D. _**Chi-square test**_&lt;br&gt;E. Spearman correlation&lt;br&gt;]]
+
+
+&lt;table style="margin-left:6%;"&gt;
+&lt;tr&gt;&lt;th align="left"&gt;&lt;/th&gt;&lt;th align="right"&gt;Clot&lt;/th&gt;&lt;th align="right"&gt;No Clot&lt;/th&gt;&lt;th align="right"&gt;Total&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;OCP Use&lt;/td&gt;&lt;td align="right"&gt;500&lt;/td&gt;&lt;td align="right"&gt;400&lt;/td&gt;&lt;td align="right"&gt;900&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;No OCP Use&lt;/td&gt;&lt;td align="right"&gt;80&lt;/td&gt;&lt;td align="right"&gt;20&lt;/td&gt;&lt;td align="right"&gt;100&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Total&lt;/td&gt;&lt;td align="right"&gt;580&lt;/td&gt;&lt;td align="right"&gt;420&lt;/td&gt;&lt;td align="right"&gt;1000&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+.pull-left[Table 1: Counts of OCP use and blood clots]
+
+---
+
+class: middle, center
+
+# Why?
+
+The data are counts.
+
+---
+
+class: middle
+
+# Data type goes with hypothesis test
+
+- **Counts of 2 or more groups:** Chi-square, Fisher exact (only 2x2 contingency)
+&lt;br&gt;&lt;br&gt;
+- **Quantitative variable + grouping variable(s):** T-test (data approximates a t-distribution), U-test (distribution not well defined), ANOVA
+&lt;br&gt;&lt;br&gt;
+- **Quantitative variable + ranking variable:** Spearman correlation
+&lt;br&gt;&lt;br&gt;
+- **Quantitative and 2 variables:** Pearson correlation
+
+---
+
+class: middle
+
+# Hypothesis testing: 4 possible outcomes
+
+.pull-left[&lt;img src="figs/truth_table.png" width="100%"/&gt;]
+
+.pull-right[
+- Correct - Reject a false `\(H_0\)`
+  - Probability of success is called "power"
+  - Power depends on sample size
+  - bigger sample = bigger power
+
+- Correct - Fail to reject a true `\(H_0\)`
+  - Probability determined by `\(\alpha\)` as `\(1−\alpha\)`
+
+- Type 1 - Incorrect rejection of a true `\(H_0\)`
+  - False Positive
+
+- Type 2 - Failure to reject a false `\(H_0\)`
+  - False Negative]
+
+---
+
+class: middle, center
+
+# Relevant Question
+
+.pull-right[.left[**An 18-month-old girl with a history of sickle cell disease is evaluated for 2 days of fever, cough, and vomiting. A rapid influenza diagnostic test is performed due to her symptoms and the high incidence of influenza A in the community. The test has 55% sensitivity and 95% specificity for influenza.&lt;br&gt;&lt;br&gt;Of the following, the MOST likely error type to occur when using this test is**&lt;br&gt;&lt;br&gt;A. type I&lt;br&gt;B. type II&lt;br&gt;C. type a&lt;br&gt;D. type b&lt;br&gt;E. type III&lt;br&gt;]]
+
+.pull-left[&lt;img src="figs/truth_table.png" width="100%"/&gt;]
+
+---
+
+class: middle, center
+
+# Hint
+
+`\(sn = \frac{TP}{TP + FN}\)`&lt;br&gt;&lt;br&gt;
+`\(sp = \frac{TN}{TN + FP}\)`
+
+---
+
+class: middle, center
+
+# Relevant Question
+
+.pull-right[.left[**An 18-month-old girl with a history of sickle cell disease is evaluated for 2 days of fever, cough, and vomiting. A rapid influenza diagnostic test is performed due to her symptoms and the high incidence of influenza A in the community. The test has 55% sensitivity and 95% specificity for influenza.&lt;br&gt;&lt;br&gt;Of the following, the MOST likely error type to occur when using this test is**&lt;br&gt;&lt;br&gt;A. type I&lt;br&gt;**B. type II**&lt;br&gt;C. type a&lt;br&gt;D. type b&lt;br&gt;E. type III&lt;br&gt;]]
+
+.pull-left[&lt;img src="figs/truth_table.png" width="100%"/&gt;]
+
+---
+
+class: middle, center
+
+# Foundation of 'Evidence-Based Medicine'
+
+---
+
+class: middle, center
+
+# The same image we always see repeated
+
+&lt;img src="figs/levels-of-evidence.svg" width="70%" /&gt;
+
+---
+
+class: middle
+
+**Two things to keep in mind:**
+
+1. Medical school emphasizes the physiological-model-as-evidence for medicine which is the lowest part of the pyramid
+&lt;br&gt;&lt;br&gt;
+2. `#`1 occurs because randomized trials and their derivatives (meta-analyses) are *extremely* inefficient means of knowledge generation
+
+---
+
+class: middle, center
+
+# Systematic Reviews 
+
+---
+
+class: middle
+
+# What is a Systematic Review?
+
+1. Rigorous and structured approach to reviewing available literature on a specific topic.
+
+---
+
+class: middle, incremental
+
+# Conducting a Systematic Review
+
+&lt;html&gt;
+--
+1. Define the research question.&lt;br&gt;
+--
+2. Develop a protocol for identifying and including/excluding studies.&lt;br&gt;
+--
+3. Conduct a literature search.&lt;br&gt;
+--
+4. Screen and select studies.&lt;br&gt;
+--
+5. Extract and synthesize data.&lt;br&gt;
+--
+6. Assess the quality of the evidence.&lt;br&gt;
+
+---
+
+class: middle, center
+
+# Meta-Analyses 
+
+---
+
+class: middle
+
+# What is a Meta-Analysis?
+
+- Statistical technique that combines results from multiple studies.
+- Generally used within a systematic review.
+
+---
+
+class: middle
+
+# Pros of Systematic Review
+
+1. **Reduces bias** - Follow a rigorous and predefined method, reducing the potential for bias in the identification, selection, and appraisal of studies.
+&lt;br&gt;&lt;br&gt;
+2. **Completeness** - Synthesize many studies to one result - With meta-analysis can generate combined (pooled) estimates and errors
+&lt;br&gt;&lt;br&gt;
+3. **Identify Gaps** - Can reveal areas where research is lacking or not of high quality, providing direction for future research
+
+---
+
+class: middle
+
+# Cons of Systematic Review
+
+1. **Extraordinarily Resource Intensive** - Take an incredible amount of prior work to achieve useful conclusions
+&lt;br&gt;&lt;br&gt;
+2. **Can Be Difficult to Interpret** - Publication bias and study heterogeneity can make it difficult to synthesize a result. 
+&lt;br&gt;&lt;br&gt;
+3. **Lag Time** - Due to #1, it take a lot of time to get an answer and sometimes the field is settled before the review is written
+
+---
+
+class: middle
+
+# A thing to know
+
+**Which of the following tools is commonly used to assess the risk of bias in studies included in a systematic review?**
+
+A. Forest plot&lt;br&gt;
+B. Funnel plot&lt;br&gt;
+C. Cochrane Risk of Bias tool&lt;br&gt;
+D. Kaplan-Meier curve&lt;br&gt;
+E. I² statistic&lt;br&gt;
+
+---
+
+class: middle
+
+# A thing to know
+
+**Which of the following tools is commonly used to assess the risk of bias in studies included in a systematic review?**
+
+A. Forest plot&lt;br&gt;
+B. Funnel plot&lt;br&gt;
+C. **Cochrane Risk of Bias tool&lt;br&gt;**
+D. Kaplan-Meier curve&lt;br&gt;
+E. I² statistic&lt;br&gt;
+
+---
+
+class: middle, center
+
+## 72 pages of pure fun
+
+&lt;img src="figs/ROB.png" width="60%" /&gt;
+
+---
+
+class: middle
+
+# All reviews are not systematic reviews
+
+- A standard review is a narrative review and it is quite different
+
+---
+
+class: middle, center
+
+# Common Statistical Methods 
+
+---
+
+class: middle
+
+# Key Statistical Methods and Evaluating Meta-analysis
+
+1. Odds Ratio (OR)
+2. Risk Ratio (RR)
+3. Risk Difference (RD)
+4. Number Needed to Treat (NNT)
+5. Heterogeneity (I2)
+6. Publication Bias (Funnel plots, Egger's test)
+
+---
+
+class: middle, center
+
+# Here is some data
+
+&lt;img src="index_files/figure-html/some-data-1.png" width="50%" /&gt;
+
+---
+
+class: middle, center
+
+# Here is the same data
+
+
+&lt;table&gt;
+&lt;tr&gt;&lt;th align="left"&gt;&lt;/th&gt;&lt;th align="right"&gt;Disease&lt;/th&gt;&lt;th align="right"&gt;No Disease&lt;/th&gt;&lt;th align="right"&gt;Total&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Exposed&lt;/td&gt;&lt;td align="right"&gt;30&lt;/td&gt;&lt;td align="right"&gt;70&lt;/td&gt;&lt;td align="right"&gt;100&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Not Exposed&lt;/td&gt;&lt;td align="right"&gt;20&lt;/td&gt;&lt;td align="right"&gt;80&lt;/td&gt;&lt;td align="right"&gt;100&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Total&lt;/td&gt;&lt;td align="right"&gt;50&lt;/td&gt;&lt;td align="right"&gt;150&lt;/td&gt;&lt;td align="right"&gt;200&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+---
+
+class: middle, center
+
+# Odds Ratio (OR)
+
+
+
+.pull-left[
+
+&lt;table&gt;
+&lt;tr&gt;&lt;th align="left"&gt;&lt;/th&gt;&lt;th align="right"&gt;Disease&lt;/th&gt;&lt;th align="right"&gt;No Disease&lt;/th&gt;&lt;th align="right"&gt;Total&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Exposed&lt;/td&gt;&lt;td align="right"&gt;30&lt;/td&gt;&lt;td align="right"&gt;70&lt;/td&gt;&lt;td align="right"&gt;100&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Not Exposed&lt;/td&gt;&lt;td align="right"&gt;20&lt;/td&gt;&lt;td align="right"&gt;80&lt;/td&gt;&lt;td align="right"&gt;100&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Total&lt;/td&gt;&lt;td align="right"&gt;50&lt;/td&gt;&lt;td align="right"&gt;150&lt;/td&gt;&lt;td align="right"&gt;200&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+]
+
+.pull-right[
+.left[
+`\(OR = \frac{D_E * ND_{NE}}{D_{NE} * ND_E} = \frac{30 * 80}{20 * 70} =\)` **1.71**
+]
+]
+
+---
+
+class: middle, center
+
+# Risk Ratio (RR)
+**Only use on random samples**
+
+
+
+.pull-left[
+
+&lt;table&gt;
+&lt;tr&gt;&lt;th align="left"&gt;&lt;/th&gt;&lt;th align="right"&gt;Disease&lt;/th&gt;&lt;th align="right"&gt;No Disease&lt;/th&gt;&lt;th align="right"&gt;Total&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Exposed&lt;/td&gt;&lt;td align="right"&gt;30&lt;/td&gt;&lt;td align="right"&gt;70&lt;/td&gt;&lt;td align="right"&gt;100&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Not Exposed&lt;/td&gt;&lt;td align="right"&gt;20&lt;/td&gt;&lt;td align="right"&gt;80&lt;/td&gt;&lt;td align="right"&gt;100&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Total&lt;/td&gt;&lt;td align="right"&gt;50&lt;/td&gt;&lt;td align="right"&gt;150&lt;/td&gt;&lt;td align="right"&gt;200&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+]
+
+.pull-right[
+.left[
+`\(R_E = \frac{D_E}{D_E + ND_E} = \frac{30}{30 + 70} = 0.3\)`&lt;br&gt;&lt;br&gt;
+`\(R_{NE} = \frac{D_{NE}}{D_{NE} + ND_{NE}} = \frac{20}{20 + 80} = 0.2\)`&lt;br&gt;&lt;br&gt;
+`\(RR = \frac{R_E}{R_{NE}} = \frac{0.3}{0.2} =\)` **1.5**
+]
+]
+
+---
+
+class: middle, center
+
+# Risk Difference (RD)
+
+
+
+.pull-left[
+
+&lt;table&gt;
+&lt;tr&gt;&lt;th align="left"&gt;&lt;/th&gt;&lt;th align="right"&gt;Disease&lt;/th&gt;&lt;th align="right"&gt;No Disease&lt;/th&gt;&lt;th align="right"&gt;Total&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Exposed&lt;/td&gt;&lt;td align="right"&gt;30&lt;/td&gt;&lt;td align="right"&gt;70&lt;/td&gt;&lt;td align="right"&gt;100&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Not Exposed&lt;/td&gt;&lt;td align="right"&gt;20&lt;/td&gt;&lt;td align="right"&gt;80&lt;/td&gt;&lt;td align="right"&gt;100&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Total&lt;/td&gt;&lt;td align="right"&gt;50&lt;/td&gt;&lt;td align="right"&gt;150&lt;/td&gt;&lt;td align="right"&gt;200&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+]
+
+.pull-right[
+.left[
+`\(R_E = \frac{D_E}{D_E + ND_E} = \frac{30}{30 + 70} = 0.3\)`&lt;br&gt;&lt;br&gt;
+`\(R_{NE} = \frac{D_{NE}}{D_{NE} + ND_{NE}} = \frac{20}{20 + 80} = 0.2\)`&lt;br&gt;&lt;br&gt;
+`\(RD = R_E - R_{NE} = 0.3 - 0.2 =\)` **0.1**
+]
+]
+
+---
+
+class: middle, center
+
+# Number Needed to Harm or Treat&lt;br&gt;(NNH or NNT)
+
+
+
+.pull-left[
+&lt;br&gt;
+
+&lt;table&gt;
+&lt;tr&gt;&lt;th align="left"&gt;&lt;/th&gt;&lt;th align="right"&gt;Disease&lt;/th&gt;&lt;th align="right"&gt;No Disease&lt;/th&gt;&lt;th align="right"&gt;Total&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Exposed&lt;/td&gt;&lt;td align="right"&gt;30&lt;/td&gt;&lt;td align="right"&gt;70&lt;/td&gt;&lt;td align="right"&gt;100&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Not Exposed&lt;/td&gt;&lt;td align="right"&gt;20&lt;/td&gt;&lt;td align="right"&gt;80&lt;/td&gt;&lt;td align="right"&gt;100&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Total&lt;/td&gt;&lt;td align="right"&gt;50&lt;/td&gt;&lt;td align="right"&gt;150&lt;/td&gt;&lt;td align="right"&gt;200&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+]
+
+.pull-right[
+.left[
+`\(R_E = \frac{D_E}{D_E + ND_E} = \frac{30}{30 + 70} = 0.3\)`&lt;br&gt;&lt;br&gt;
+`\(R_{NE} = \frac{D_{NE}}{D_{NE} + ND_{NE}} = \frac{20}{20 + 80} = 0.2\)`&lt;br&gt;&lt;br&gt;
+`\(RD = R_E - R_{NE} = 0.3 - 0.2 = 0.1\)`&lt;br&gt;&lt;br&gt;
+`\(NNH = \frac{1}{0.1} =\)` **10**
+]
+]
+
+---
+
+class: middle, center
+
+# What if we use these 4 studies
+## We'll make a meta-analysis
+
+.pull-left[
+
+&lt;table&gt;
+&lt;tr&gt;&lt;th align="left"&gt;&lt;/th&gt;&lt;th align="right"&gt;Disease&lt;/th&gt;&lt;th align="right"&gt;No Disease&lt;/th&gt;&lt;th align="right"&gt;Total&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Exposed&lt;/td&gt;&lt;td align="right"&gt;30&lt;/td&gt;&lt;td align="right"&gt;70&lt;/td&gt;&lt;td align="right"&gt;100&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Not Exposed&lt;/td&gt;&lt;td align="right"&gt;20&lt;/td&gt;&lt;td align="right"&gt;80&lt;/td&gt;&lt;td align="right"&gt;100&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Total&lt;/td&gt;&lt;td align="right"&gt;50&lt;/td&gt;&lt;td align="right"&gt;150&lt;/td&gt;&lt;td align="right"&gt;200&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+
+&lt;table&gt;
+&lt;tr&gt;&lt;th align="left"&gt;&lt;/th&gt;&lt;th align="right"&gt;Disease&lt;/th&gt;&lt;th align="right"&gt;No Disease&lt;/th&gt;&lt;th align="right"&gt;Total&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Exposed&lt;/td&gt;&lt;td align="right"&gt;39&lt;/td&gt;&lt;td align="right"&gt;61&lt;/td&gt;&lt;td align="right"&gt;100&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Not Exposed&lt;/td&gt;&lt;td align="right"&gt;20&lt;/td&gt;&lt;td align="right"&gt;80&lt;/td&gt;&lt;td align="right"&gt;100&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Total&lt;/td&gt;&lt;td align="right"&gt;59&lt;/td&gt;&lt;td align="right"&gt;141&lt;/td&gt;&lt;td align="right"&gt;200&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+]
+
+.pull-right[
+
+&lt;table&gt;
+&lt;tr&gt;&lt;th align="left"&gt;&lt;/th&gt;&lt;th align="right"&gt;Disease&lt;/th&gt;&lt;th align="right"&gt;No Disease&lt;/th&gt;&lt;th align="right"&gt;Total&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Exposed&lt;/td&gt;&lt;td align="right"&gt;33&lt;/td&gt;&lt;td align="right"&gt;67&lt;/td&gt;&lt;td align="right"&gt;100&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Not Exposed&lt;/td&gt;&lt;td align="right"&gt;27&lt;/td&gt;&lt;td align="right"&gt;73&lt;/td&gt;&lt;td align="right"&gt;100&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Total&lt;/td&gt;&lt;td align="right"&gt;60&lt;/td&gt;&lt;td align="right"&gt;140&lt;/td&gt;&lt;td align="right"&gt;200&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+
+&lt;table&gt;
+&lt;tr&gt;&lt;th align="left"&gt;&lt;/th&gt;&lt;th align="right"&gt;Disease&lt;/th&gt;&lt;th align="right"&gt;No Disease&lt;/th&gt;&lt;th align="right"&gt;Total&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Exposed&lt;/td&gt;&lt;td align="right"&gt;36&lt;/td&gt;&lt;td align="right"&gt;64&lt;/td&gt;&lt;td align="right"&gt;100&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Not Exposed&lt;/td&gt;&lt;td align="right"&gt;19&lt;/td&gt;&lt;td align="right"&gt;81&lt;/td&gt;&lt;td align="right"&gt;100&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="left"&gt;Total&lt;/td&gt;&lt;td align="right"&gt;55&lt;/td&gt;&lt;td align="right"&gt;145&lt;/td&gt;&lt;td align="right"&gt;200&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+]
+
+---
+
+class: middle, center
+
+# Calculate odds ratios and standard error
+
+`\(OR = \frac{A * D}{B * C}\)`&lt;br&gt;
+`\(SE = sqrt(\frac{1}{A} + \frac{1}{B} + \frac{1}{C} + \frac{1}{D})\)`&lt;br&gt;&lt;br&gt;
+
+.pull-left[
+
+`\(OR_1 = 1.71\)`&lt;br&gt;
+`\(OR_2 = 1.33\)`&lt;br&gt;
+`\(OR_3 = 2.56\)`&lt;br&gt;
+`\(OR_4 = 2.4\)`&lt;br&gt;
+]
+
+.pull-right[
+
+`\(SE_1 = 0.33\)`&lt;br&gt;
+`\(SE_2 = 0.31\)`&lt;br&gt;
+`\(SE_3 = 0.32\)`&lt;br&gt;
+`\(SE_4 = 0.33\)`&lt;br&gt;
+]
+
+`\(\begin{equation} \begin{split} CI &amp; = e^{ln(OR) \pm t_{crit} * SE} \\ &amp; = e^{ln(OR) \pm 1.96 * SE} \end{split} \end{equation}\)`&lt;br&gt;&lt;br&gt;
+`\(t_{crit} = 1.96\)` for 95% CI
+
+---
+
+class: middle, left
+
+# Question about heterogeneity
+
+
+**In a meta-analysis, the term "heterogeneity" refers to:**
+
+A. The similarity in study design among included studies.&lt;br&gt;
+B. The difference in study outcomes across included studies.&lt;br&gt;
+C. The uniformity in sample sizes of included studies.&lt;br&gt;
+D. The consistency in publication dates of included studies.&lt;br&gt;
+E. The methodological quality of included studies.&lt;br&gt;
+
+---
+
+class: middle, left
+
+# Question about heterogeneity
+
+**In a meta-analysis, the term "heterogeneity" refers to:**
+
+A. The similarity in study design among included studies.&lt;br&gt;
+**B. The difference in study outcomes across included studies.&lt;br&gt;**
+C. The uniformity in sample sizes of included studies.&lt;br&gt;
+D. The consistency in publication dates of included studies.&lt;br&gt;
+E. The methodological quality of included studies.&lt;br&gt;
+
+---
+
+class: middle, left
+
+## According to a JAMA
+
+&lt;img src="figs/heterogeneity.png" width="100%" /&gt;
+
+Imrey, P. Limitations of Meta-analyses of Studies With High Heterogeneity. JAMA Network Open.
+
+---
+
+class: middle, center
+
+# Heterogeneity (I2) for our Meta-analysis
+
+&lt;img src="index_files/figure-html/i2-1.png" width="70%" /&gt;
+
+---
+
+class: middle
+
+# Another slide on heterogeneity
+
+&gt; "The quantity, which we call I2, describes the percentage of total variation across studies that is due to heterogeneity rather than chance. I2 can be readily calculated from basic results obtained from a typical meta-analysis as `\(I2 = 100\%×(Q - df)/Q\)`, where Q is Cochran's heterogeneity statistic and df the degrees of freedom. Negative values of I2 are put equal to zero so that I2 lies between 0% and 100%."
+
+- Generally people break heterogeneity like this:
+  - Low Heterogeneity: &lt;25%
+  - Medium Heterogeneity: 50%
+  - High Heterogeneity: &gt;75%
+- If heterogeneity is a significant effect you might look for further investigation
+- They might perform a random effects regression to include stratification or subgroup analysis
+
+---
+
+class: middle, center
+
+# Forest Plot of our Meta-analysis
+
+&lt;img src="index_files/figure-html/forest-1.png" width="70%" /&gt;
+
+---
+
+class: middle
+
+# Here is a Cochrane forest plot
+
+&lt;img src="figs/cochrane.jpeg" width="100%"/&gt;
+
+---
+
+class: middle
+
+# Question about funnel plots
+
+**What is the primary purpose of a funnel plot in a meta-analysis?**
+
+A. Display the individual results of each study included in the analysis.&lt;br&gt;
+B. Assess the overall effect size of the included studies.&lt;br&gt;
+C. Evaluate the presence of publication bias.&lt;br&gt;
+D. Show the time-to-event data for the included studies.&lt;br&gt;
+E. Summarize the methodological quality of the included studies.&lt;br&gt;
+
+---
+
+class: middle
+
+# Question about funnel plots
+
+**What is the primary purpose of a funnel plot in a meta-analysis?**
+
+A. Display the individual results of each study included in the analysis.&lt;br&gt;
+B. Assess the overall effect size of the included studies.&lt;br&gt;
+**C. Evaluate the presence of publication bias.&lt;br&gt;**
+D. Show the time-to-event data for the included studies.&lt;br&gt;
+E. Summarize the methodological quality of the included studies.&lt;br&gt;
+
+---
+
+class: middle, center
+
+## now I make up different data to facilitate plotting
+
+---
+
+class: middle, center
+
+# Publication Bias - Unbiased Funnel Plot
+
+&lt;img src="index_files/figure-html/unbiased-funnel-plot-1.png" width="70%" /&gt;
+
+**midline represents median effect**&lt;br&gt;
+**horizontal lines represent 95% CI**&lt;br&gt;
+
+---
+
+class: middle, center
+
+# Publication Bias - Unbiased Testing
+
+&lt;img src="index_files/figure-html/unbiased-funnel-egger-test-1.png" width="70%" /&gt;
+
+---
+
+class: middle, center
+
+# Publication Bias - Biased Funnel Plot
+
+&lt;img src="index_files/figure-html/biased-funnel-plot-1.png" width="70%" /&gt;
+
+---
+
+class: middle, center
+
+# Publication Bias - Biased Testing
+
+&lt;img src="index_files/figure-html/biased-funnel-egger-test-1.png" width="70%" /&gt;
+
+---
+
+class: middle
+
+# Caveats - there are some subtle points
+ 
+---
+
+class: middle
+
+# Caveats
+
+- people are **not** particularly good at determining bias from visual inspection of a forest plot
+- Egger's test is just an example
+  - it has been extensively studied on binary outcomes
+  - there are more sophisticated methods for continuous outcomes (random effects modeling)
+- would be good to generally avoid systematic reviews that attempt to pool metrics from methodologically different studies
+  - eg trying to combine odds ratios from case-control trials and cohort is not a great idea
+  - it would be better to match like-studies
+- you can only calculate risk ratios from random population samples (not case-controls)
+- be sure to evaluate whether efforts to mitigate bias are sufficient
+- subgroup analysis is very useful for hypothesis generation
+  - **just be aware that if it is your primary endpoint, most people will expect multiple testing adjustment**
+
+---
+
+class: middle, center
+
+# Multiple testing can be a *real* problem
+
+.pull-left[
+&lt;img src="figs/multiple_testing.png" width="100%" /&gt;
+]
+
+.pull-right[
+.left[
+&lt;br&gt;
+- look how many hypothesis tests they ran!! &lt;br&gt;&lt;br&gt;
+
+- every p-value is a hypothesis test &lt;br&gt;&lt;br&gt;
+
+- given a true null, how many tests would you expect to reject the null randomly?
+]
+]
+
+**this is subgroup testing and why it is better for hypothesis generation**
+
+---
+
+class: middle, center
+
+# The End
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlide": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
